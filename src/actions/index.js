@@ -19,3 +19,17 @@ export const addGradeRecord = (gradeData) => async (dispatch) => {
         grade: resp.data
     })
 }
+
+export function deleteGradeRecord(id, index) {
+    return async function (dispatch, getState) {
+        await axios.delete(`/api/grades/${id}`);
+        const { grades } = getState();
+        const list = [...grades.list];
+        list.splice(index, 1);
+
+        dispatch({
+            type: types.DELETE_GRADE_RECORD,
+            list: list
+        })
+    }
+}
