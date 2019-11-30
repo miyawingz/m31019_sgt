@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { deleteGradeRecord } from '../actions';
 
 class GradeRow extends Component {
-    async handleDelete(id){
-        // Delete grade entry from server
-
-        console.log('Delete Grade Data with ID:', id);
+    async handleDelete(id,index) {
+        this.props.deleteGradeRecord(id,index);
     }
 
-    render(){
-        const { name, course, grade, id } = this.props;
+    render() {
+        const { name, course, grade, id, index } = this.props;
 
         return (
             <tr className={''}>
@@ -18,9 +17,9 @@ class GradeRow extends Component {
                 <td>{course}</td>
                 <td>{grade}</td>
                 <td className="text-center">
-                    <i 
+                    <i
                         className="fas fa-trash fa-lg text-danger mx-2"
-                        onClick={() => this.handleDelete(id)}
+                        onClick={() => this.handleDelete(id, index)}
                     ></i>
                     {/* When Ready to add update functionality uncomment this code
                     <i
@@ -33,10 +32,12 @@ class GradeRow extends Component {
     }
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
     return {
-        
+
     }
 }
 
-export default connect(mapStateToProps, {})(GradeRow);
+export default connect(mapStateToProps, {
+    deleteGradeRecord: deleteGradeRecord
+})(GradeRow);
