@@ -1,3 +1,4 @@
 export default {
+    ADD_GRADE_RECORD:'ADD_GARDE_RECORD',
     GET_GRADE_DATA:'GET_GRADE_DATA'
 }

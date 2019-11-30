@@ -8,6 +8,8 @@ const DEFAULT_STATE = {
 
 export default (state = DEFAULT_STATE, action) => {
     switch (action.type) {
+        case (types.ADD_GRADE_RECORD):
+            return { ...state, list: [...state.list, action.grade] }
         case (types.GET_GRADE_DATA):
             return { ...state, list: action.grades }
         default:
