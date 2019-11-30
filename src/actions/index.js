@@ -10,3 +10,12 @@ export function getGradeData() {
         })
     }
 }
+
+export const addGradeRecord = (gradeData) => async (dispatch) => {
+    const resp = await axios.post('/api/grades', gradeData);
+
+    dispatch({
+        type: types.ADD_GRADE_RECORD,
+        grade: resp.data
+    })
+}
